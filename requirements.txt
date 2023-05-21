@@ -1,7 +1,10 @@
 azure-core
+chromadb
 dash
 dash-bootstrap-components
 google-search-results
 langchain
 openai
+pypdf
+tiktoken
 wikipedia
