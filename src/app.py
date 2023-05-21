@@ -37,6 +37,7 @@ def output_text(value):
     if not value:
         return "", ""
 
+    print("Calling API")
     result = chain.run(value)
 
     output_user = extract_user_output(result)
@@ -50,7 +51,7 @@ def extract_user_output(text):
     m = re.search(r"///.*///", text)
     if not m:
         return ""
-    return m.group().replace('///', '')
+    return m.group().replace('///', '').strip()
 
 
 if __name__ == "__main__":
