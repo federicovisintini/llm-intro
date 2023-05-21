@@ -47,8 +47,10 @@ def output_text(value):
 
 def extract_user_output(text):
     """ Defined as the text inside "" """
-    m = re.search(r'".*"', text)
-    return m.group().replace('"', '')
+    m = re.search(r"///.*///", text)
+    if not m:
+        return ""
+    return m.group().replace('///', '')
 
 
 if __name__ == "__main__":

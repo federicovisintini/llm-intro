@@ -12,7 +12,8 @@ prompt = PromptTemplate(
     input_variables=["user_request"],
     template='{user_request} + try to come up with the output thinking out loud. '
              'First decompose the problem into substeps, and try to find the solution for the single substeps. '
-             'Then, put them together, and print the user response enclosing it into “”. Use "" only for user output.'
+             'Then, put them together, and print the user response enclosing it inside /// ///. '
+             'Use /// /// only for user output.'
 )
 
 chain = LLMChain(llm=llm, prompt=prompt)
