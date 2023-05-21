@@ -13,7 +13,7 @@ app.layout = dbc.Container([
     html.Br(),
     dbc.Row([
         html.H5("Insert you input here:"),
-        dbc.Input(id="input", placeholder="Type something...", type="text"),
+        dbc.Input(id="input", placeholder="Type something...", type="text", debounce=True),
     ], id='input_row'),
     html.Br(),
     dbc.Row([
