@@ -1,6 +1,8 @@
 import dash_bootstrap_components as dbc
 from dash import Dash, html, Output, Input
 
+from src.llm import llm
+
 app = Dash(
     external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
@@ -31,12 +33,16 @@ app.layout = dbc.Container([
 
 @app.callback(Output("output_user", "children"), [Input("input", "value")])
 def output_text(value):
-    return f"LLM output({value})"
+    if not value:
+        return ""
+    return llm(value)
 
 
 @app.callback(Output("internal_thoughts", "children"), [Input("input", "value")])
 def thoughts_text(value):
-    return f"LLM thoughts({value})"
+    if not value:
+        return ""
+    return llm(value + " Think out loud")
 
 
 if __name__ == "__main__":
