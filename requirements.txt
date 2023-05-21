@@ -1,5 +1,7 @@
 azure-core
 dash
 dash-bootstrap-components
+google-search-results
 langchain
 openai
+wikipedia
