@@ -1,7 +1,8 @@
+import re
 import dash_bootstrap_components as dbc
 from dash import Dash, html, Output, Input
 
-from src.llm import llm
+from src.llm import chain
 
 app = Dash(
     external_stylesheets=[dbc.themes.BOOTSTRAP]
@@ -31,18 +32,23 @@ app.layout = dbc.Container([
 ])
 
 
-@app.callback(Output("output_user", "children"), [Input("input", "value")])
+@app.callback([Output("output_user", "children"), Output("internal_thoughts", "children")], [Input("input", "value")])
 def output_text(value):
     if not value:
         return ""
-    return llm(value)
+
+    result = chain.run(value)
+
+    output_user = extract_user_output(result)
+    internal_thoughts = result
+
+    return output_user, internal_thoughts
 
 
-@app.callback(Output("internal_thoughts", "children"), [Input("input", "value")])
-def thoughts_text(value):
-    if not value:
-        return ""
-    return llm(value + " Think out loud")
+def extract_user_output(text):
+    """ Defined as the text inside "" """
+    m = re.search(r'".*"', text)
+    return m.group().replace('"', '')
 
 
 if __name__ == "__main__":
