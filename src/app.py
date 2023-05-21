@@ -35,7 +35,7 @@ app.layout = dbc.Container([
 @app.callback([Output("output_user", "children"), Output("internal_thoughts", "children")], [Input("input", "value")])
 def output_text(value):
     if not value:
-        return ""
+        return "", ""
 
     result = chain.run(value)
 
