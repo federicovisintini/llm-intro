@@ -1,0 +1,5 @@
+azure-core
+dash
+dash-bootstrap-components
+langchain
+openai
