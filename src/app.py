@@ -14,7 +14,7 @@ app.layout = dbc.Container([
     dbc.Row([
         html.H5("Insert you input here:"),
         dbc.Input(id="input", placeholder="Type something...", type="text"),
-    ],  id='input_row'),
+    ], id='input_row'),
     html.Br(),
     dbc.Row([
         dbc.Col([
@@ -25,7 +25,7 @@ app.layout = dbc.Container([
             html.H5("These are the LLM thoughts:"),
             html.P(id="internal_thoughts"),
         ], id="internal_thoughts_col"),
-    ],  id='output_row'),
+    ], id='output_row'),
 ])
 
 
